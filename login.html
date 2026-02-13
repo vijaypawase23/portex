@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GraceXpress - Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== TOP-BOTTOM SPLIT BACKGROUND ===== */
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(to bottom, #0f2027 50%, #ff7a00 50%);
+    position:relative;
+    overflow:hidden;
+}
+
+/* ===== Animated Truck ===== */
+.truck {
+    position: absolute;
+    bottom: 20%;
+    left: -150px;
+    width: 120px;
+    height: 60px;
+    background: url('https://i.postimg.cc/7ZbF3XxY/truck.png') no-repeat center/contain;
+    animation: drive 10s linear infinite;
+}
+
+@keyframes drive {
+    0% { left: -150px; }
+    100% { left: 110%; }
+}
+
+/* ===== LOGIN CARD ===== */
+.login-container{
+    background:white;
+    width:100%;
+    max-width:400px;
+    padding:40px 30px;
+    border-radius:15px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.3);
+    z-index:10;
+    animation: slideUp 1s ease;
+}
+
+@keyframes slideUp{
+    from{opacity:0; transform:translateY(50px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* ===== LOGO ===== */
+.logo{
+    text-align:center;
+    font-size:26px;
+    font-weight:bold;
+    margin-bottom:25px;
+    color:#0f2027;
+}
+
+.logo span{
+    color:#ff7a00;
+}
+
+/* ===== INPUTS ===== */
+.input-group{
+    margin-bottom:18px;
+    position:relative;
+}
+
+.input-group input{
+    width:100%;
+    padding:12px 40px 12px 12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    transition:0.3s;
+}
+
+.input-group input:focus{
+    border-color:#ff7a00;
+    box-shadow:0 0 8px rgba(255,122,0,0.5);
+    outline:none;
+}
+
+.toggle-password{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    font-size:13px;
+    color:#555;
+}
+
+/* ===== OPTIONS ===== */
+.options{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+.options a{
+    text-decoration:none;
+    color:#0f2027;
+}
+
+.options a:hover{
+    color:#ff7a00;
+}
+
+/* ===== BUTTON ===== */
+button{
+    width:100%;
+    padding:12px;
+    background:#0f2027;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:15px;
+}
+
+button:hover{
+    background:#ff7a00;
+    transform:scale(1.05);
+}
+
+/* ===== MESSAGES ===== */
+.error{
+    color:red;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.success{
+    text-align:center;
+    color:green;
+    margin-top:15px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+    body{
+        background: linear-gradient(to bottom, #0f2027 50%, #ff7a00 50%);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Truck Animation -->
+<div class="truck"></div>
+
+<div class="login-container">
+    <div class="logo">Grace<span>Xpress</span></div>
+
+    <form id="loginForm">
+        <div class="input-group">
+            <input type="text" id="email" placeholder="Email Address">
+            <div class="error" id="emailError"></div>
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password">
+            <span class="toggle-password" onclick="togglePassword()">Show</span>
+            <div class="error" id="passwordError"></div>
+        </div>
+
+        <div class="options">
+            <label><input type="checkbox"> Remember Me</label>
+            <a href="#">Forgot Password?</a>
+        </div>
+
+        <button type="submit">Login</button>
+        <div class="success" id="successMessage"></div>
+    </form>
+</div>
+
+<script>
+// Toggle Password
+function togglePassword(){
+    const password = document.getElementById("password");
+    const toggle = document.querySelector(".toggle-password");
+
+    if(password.type === "password"){
+        password.type = "text";
+        toggle.textContent = "Hide";
+    } else {
+        password.type = "password";
+        toggle.textContent = "Show";
+    }
+}
+
+// Validation
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    let emailError = document.getElementById("emailError");
+    let passwordError = document.getElementById("passwordError");
+    let successMessage = document.getElementById("successMessage");
+
+    emailError.textContent="";
+    passwordError.textContent="";
+    successMessage.textContent="";
+
+    let isValid=true;
+
+    let emailPattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if(!email.match(emailPattern)){
+        emailError.textContent="Enter valid email address.";
+        isValid=false;
+    }
+
+    if(password.length<6){
+        passwordError.textContent="Password must be at least 6 characters.";
+        isValid=false;
+    }
+
+    if(isValid){
+        successMessage.textContent="Login Successful! Welcome to GraceXpress 🚚";
+    }
+});
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GraceXpress - Login</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== TOP-BOTTOM SPLIT BACKGROUND ===== */
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(to bottom, #0f2027 50%, #ff7a00 50%);
+    position:relative;
+    overflow:hidden;
+}
+
+/* ===== Animated Truck ===== */
+.truck {
+    position: absolute;
+    bottom: 20%;
+    left: -150px;
+    width: 120px;
+    height: 60px;
+    background: url('https://i.postimg.cc/7ZbF3XxY/truck.png') no-repeat center/contain;
+    animation: drive 10s linear infinite;
+}
+
+@keyframes drive {
+    0% { left: -150px; }
+    100% { left: 110%; }
+}
+
+/* ===== LOGIN CARD ===== */
+.login-container{
+    background:white;
+    width:100%;
+    max-width:400px;
+    padding:40px 30px;
+    border-radius:15px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.3);
+    z-index:10;
+    animation: slideUp 1s ease;
+}
+
+@keyframes slideUp{
+    from{opacity:0; transform:translateY(50px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* ===== LOGO ===== */
+.logo{
+    text-align:center;
+    font-size:26px;
+    font-weight:bold;
+    margin-bottom:25px;
+    color:#0f2027;
+}
+
+.logo span{
+    color:#ff7a00;
+}
+
+/* ===== INPUTS ===== */
+.input-group{
+    margin-bottom:18px;
+    position:relative;
+}
+
+.input-group input{
+    width:100%;
+    padding:12px 40px 12px 12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    transition:0.3s;
+}
+
+.input-group input:focus{
+    border-color:#ff7a00;
+    box-shadow:0 0 8px rgba(255,122,0,0.5);
+    outline:none;
+}
+
+.toggle-password{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    font-size:13px;
+    color:#555;
+}
+
+/* ===== OPTIONS ===== */
+.options{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+.options a{
+    text-decoration:none;
+    color:#0f2027;
+}
+
+.options a:hover{
+    color:#ff7a00;
+}
+
+/* ===== BUTTON ===== */
+button{
+    width:100%;
+    padding:12px;
+    background:#0f2027;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:15px;
+}
+
+button:hover{
+    background:#ff7a00;
+    transform:scale(1.05);
+}
+
+/* ===== MESSAGES ===== */
+.error{
+    color:red;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.success{
+    text-align:center;
+    color:green;
+    margin-top:15px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+    body{
+        background: linear-gradient(to bottom, #0f2027 50%, #ff7a00 50%);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Truck Animation -->
+<div class="truck"></div>
+
+<div class="login-container">
+    <div class="logo">Grace<span>Xpress</span></div>
+
+    <form id="loginForm">
+        <div class="input-group">
+            <input type="text" id="email" placeholder="Email Address">
+            <div class="error" id="emailError"></div>
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password">
+            <span class="toggle-password" onclick="togglePassword()">Show</span>
+            <div class="error" id="passwordError"></div>
+        </div>
+
+        <div class="options">
+            <label><input type="checkbox"> Remember Me</label>
+            <a href="#">Forgot Password?</a>
+        </div>
+
+        <button type="submit">Login</button>
+        <div class="success" id="successMessage"></div>
+    </form>
+</div>
+
+<script>
+// Toggle Password
+function togglePassword(){
+    const password = document.getElementById("password");
+    const toggle = document.querySelector(".toggle-password");
+
+    if(password.type === "password"){
+        password.type = "text";
+        toggle.textContent = "Hide";
+    } else {
+        password.type = "password";
+        toggle.textContent = "Show";
+    }
+}
+
+// Validation
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    let emailError = document.getElementById("emailError");
+    let passwordError = document.getElementById("passwordError");
+    let successMessage = document.getElementById("successMessage");
+
+    emailError.textContent="";
+    passwordError.textContent="";
+    successMessage.textContent="";
+
+    let isValid=true;
+
+    let emailPattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if(!email.match(emailPattern)){
+        emailError.textContent="Enter valid email address.";
+        isValid=false;
+    }
+
+    if(password.length<6){
+        passwordError.textContent="Password must be at least 6 characters.";
+        isValid=false;
+    }
+
+    if(isValid){
+        successMessage.textContent="Login Successful! Welcome to GraceXpress 🚚";
+    }
+});
+</script>
+
+</body>
+</html>
