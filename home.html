@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PorTex - Transport Services</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+
+/* ===== GLOBAL ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+    position:sticky;
+    top:0;
+    background:#0a1f44;
+    padding:15px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+}
+
+.logo{
+    color:#ff7a00;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.navbar ul{
+    list-style:none;
+    display:flex;
+    align-items:center;
+}
+
+.navbar ul li{
+    margin-left:20px;
+}
+
+.navbar ul li a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.navbar ul li a:hover{
+    color:#ff7a00;
+}
+
+/* Login & Register Buttons */
+.auth-btn{
+    padding:6px 15px;
+    border-radius:5px;
+    border:2px solid #ff7a00;
+}
+
+.login-btn{
+    background:transparent;
+}
+
+.register-btn{
+    background:#ff7a00;
+    color:white !important;
+}
+
+.register-btn:hover{
+    background:#e56700;
+}
+
+/* ===== HERO ===== */
+.hero{
+    height:90vh;
+    background:url("https://images.unsplash.com/photo-1509395176047-4a66953fd231") no-repeat center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-size:45px;
+    animation:fadeUp 1.5s ease-in-out;
+}
+
+.btn{
+    background:#ff7a00;
+    border:none;
+    padding:12px 25px;
+    color:white;
+    cursor:pointer;
+    margin-top:20px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#e56700;
+    transform:scale(1.1);
+}
+
+/* ===== SERVICES ===== */
+.services{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.service-container{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:white;
+    margin:20px;
+    padding:30px;
+    width:280px;
+    border-radius:10px;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card i{
+    font-size:40px;
+    color:#ff7a00;
+    margin-bottom:15px;
+}
+
+/* ===== ABOUT ===== */
+.about{
+    padding:60px 20px;
+}
+
+.about-container{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+}
+
+.about-container img{
+    width:400px;
+    border-radius:10px;
+    margin:20px;
+}
+
+.about-container div{
+    max-width:500px;
+}
+
+/* ===== STATS ===== */
+.stats{
+    background:#0a1f44;
+    color:white;
+    display:flex;
+    justify-content:space-around;
+    padding:50px 20px;
+}
+
+.stat h2{
+    font-size:40px;
+    color:#ff7a00;
+}
+
+/* ===== CONTACT ===== */
+.contact{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.contact form{
+    max-width:500px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+}
+
+.contact input,
+.contact textarea{
+    padding:10px;
+    margin:10px 0;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    background:#0a1f44;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.social i{
+    margin:10px;
+    cursor:pointer;
+}
+
+/* ===== SCROLL TOP ===== */
+#scrollTop{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    background:#ff7a00;
+    border:none;
+    padding:10px;
+    display:none;
+    cursor:pointer;
+    color:white;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+    .navbar{
+        flex-direction:column;
+    }
+    .service-container{
+        flex-direction:column;
+        align-items:center;
+    }
+    .stats{
+        flex-direction:column;
+        text-align:center;
+    }
+    .about-container{
+        flex-direction:column;
+    }
+    .about-container img{
+        width:100%;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="navbar">
+    <div class="logo">PorTex</div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#">Tracking</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+            <!-- Login & Register -->
+            <li><a href="login.html" class="auth-btn login-btn">Login</a></li>
+            <li><a href="#" class="auth-btn register-btn">Register</a></li>
+
+        </ul>
+    </nav>
+</header>
