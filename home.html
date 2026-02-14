@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PorTex</title>
+<title>PorTex - Transport Service</title>
 
 <style>
 *{
@@ -37,12 +37,17 @@ body{
     color:#ff6600;
 }
 
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
 .selected-city{
     background:#eee;
     padding:6px 12px;
     border-radius:20px;
     cursor:pointer;
-    margin-left:20px;
 }
 
 .nav-buttons a{
@@ -66,7 +71,7 @@ body{
 .hero{
     height:350px;
     background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-    url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d');
+    url('images/transport-bg.jpg');
     background-size:cover;
     background-position:center;
     display:flex;
@@ -84,6 +89,7 @@ body{
     gap:40px;
     padding:50px 20px;
     background:white;
+    flex-wrap:wrap;
 }
 
 .service-box{
@@ -120,11 +126,11 @@ body{
 
 .popup-content{
     background:white;
-    width:80%;
-    max-width:900px;
+    width:90%;
+    max-width:1000px;
     padding:30px;
     border-radius:10px;
-    max-height:80vh;
+    max-height:85vh;
     overflow-y:auto;
 }
 
@@ -142,6 +148,7 @@ body{
 .city{
     text-align:center;
     cursor:pointer;
+    transition:0.3s;
 }
 
 .city img{
@@ -149,6 +156,10 @@ body{
     height:100px;
     object-fit:cover;
     border-radius:15px;
+}
+
+.city:hover{
+    transform:scale(1.05);
 }
 
 .city-name{
@@ -160,6 +171,7 @@ body{
     float:right;
     cursor:pointer;
     font-weight:bold;
+    font-size:18px;
 }
 </style>
 </head>
@@ -168,7 +180,7 @@ body{
 
 <!-- NAVBAR -->
 <div class="navbar">
-    <div style="display:flex;align-items:center;">
+    <div class="nav-left">
         <div class="logo">Por<span>Tex</span></div>
         <div class="selected-city" id="cityDisplay" onclick="openPopup()">Choose City</div>
     </div>
@@ -184,9 +196,8 @@ body{
     Delivery Aapki, Transport Hamara
 </div>
 
-<!-- SERVICES SECTION -->
+<!-- SERVICES -->
 <div class="services">
-
     <div class="service-box">
         <img src="images/truck.png">
         <h3>Truck</h3>
@@ -201,7 +212,6 @@ body{
         <img src="images/packers.png">
         <h3>Packers & Movers</h3>
     </div>
-
 </div>
 
 <!-- CITY POPUP -->
@@ -212,20 +222,21 @@ body{
 
         <div class="city-grid">
 
-            <div class="city" onclick="selectCity('Pune')">
-                <img src="images/pune.jpg">
-                <div class="city-name">Pune</div>
-            </div>
+            <!-- All Cities -->
+            <script>
+                const cities = [
+                "Chennai","Coimbatore","Ahmedabad","Bangalore","Hyderabad",
+                "Indore","Jaipur","Kanpur","Lucknow","Mumbai",
+                "Nagpur","Loni","Surat"
+                ];
 
-            <div class="city" onclick="selectCity('Mumbai')">
-                <img src="images/mumbai.jpg">
-                <div class="city-name">Mumbai</div>
-            </div>
-
-            <div class="city" onclick="selectCity('Nashik')">
-                <img src="images/nashik.jpg">
-                <div class="city-name">Nashik</div>
-            </div>
+                document.write(cities.map(city => `
+                <div class="city" onclick="selectCity('${city}')">
+                    <img src="images/${city.toLowerCase()}.jpg">
+                    <div class="city-name">${city}</div>
+                </div>
+                `).join(""));
+            </script>
 
         </div>
     </div>
