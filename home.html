@@ -1,166 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Transport Service</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PorTex</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial;
+}
 
-        body {
-            background-color: #f5f5f5;
-        }
+body{
+    background:#f5f5f5;
+}
 
-        /* Navbar */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:white;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #0066cc;
-        }
+.logo{
+    font-size:26px;
+    font-weight:bold;
+    color:#007bff;
+}
 
-        .nav-buttons a {
-            text-decoration: none;
-            margin-left: 15px;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-size: 14px;
-        }
+.logo span{
+    color:#ff6600;
+}
 
-        .login-btn {
-            border: 1px solid #0066cc;
-            color: #0066cc;
-        }
+.selected-city{
+    background:#eee;
+    padding:6px 12px;
+    border-radius:20px;
+    cursor:pointer;
+    margin-left:20px;
+}
 
-        .register-btn {
-            background-color: #0066cc;
-            color: white;
-        }
+.nav-buttons a{
+    text-decoration:none;
+    margin-left:15px;
+    padding:8px 15px;
+    border-radius:5px;
+}
 
-        .register-btn:hover {
-            background-color: #004999;
-        }
+.login-btn{
+    border:1px solid #007bff;
+    color:#007bff;
+}
 
-        /* Hero Section */
-        .hero {
-            height: 400px;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-left: 80px;
-        }
+.register-btn{
+    background:#007bff;
+    color:white;
+}
 
-        .hero h1 {
-            font-size: 40px;
-        }
+/* HERO */
+.hero{
+    height:350px;
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:32px;
+}
 
-        .hero p {
-            font-size: 20px;
-            margin-top: 10px;
-        }
+/* POPUP */
+.popup{
+    display:none;
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    top:0;
+    left:0;
+    justify-content:center;
+    align-items:center;
+}
 
-        /* Service Section */
-        .services {
-            margin: -50px auto 50px;
-            width: 80%;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-around;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+.popup-content{
+    background:white;
+    width:80%;
+    max-width:900px;
+    padding:30px;
+    border-radius:10px;
+    max-height:80vh;
+    overflow-y:auto;
+}
 
-        .service-box {
-            text-align: center;
-            padding: 20px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+.popup-content h2{
+    text-align:center;
+    margin-bottom:20px;
+}
 
-        .service-box:hover {
-            transform: scale(1.05);
-        }
+.city-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+    gap:20px;
+}
 
-        .service-box img {
-            width: 60px;
-            margin-bottom: 10px;
-        }
+.city{
+    text-align:center;
+    cursor:pointer;
+    transition:0.3s;
+}
 
-        .estimate-btn {
-            background-color: #0066cc;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            align-self: center;
-        }
+.city img{
+    width:100px;
+    height:100px;
+    object-fit:cover;
+    border-radius:15px;
+}
 
-        .estimate-btn:hover {
-            background-color: #004999;
-        }
+.city:hover{
+    transform:scale(1.05);
+}
 
-    </style>
+.city-name{
+    margin-top:8px;
+    font-size:14px;
+}
+
+.close{
+    float:right;
+    cursor:pointer;
+    font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">MyTransport</div>
-
-        <div class="nav-buttons">
-            <a href="login.html" class="login-btn">Login</a>
-            <a href="register.html" class="register-btn">Register</a>
-        </div>
+<!-- NAVBAR -->
+<div class="navbar">
+    <div style="display:flex;align-items:center;">
+        <div class="logo">Por<span>Tex</span></div>
+        <div class="selected-city" id="cityDisplay" onclick="openPopup()">Choose City</div>
     </div>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>Delivery Aapki, Transport Hamara</h1>
-        <p>Reliable & Hassle-Free Goods Transport Service</p>
+    <div class="nav-buttons">
+        <a href="login.html" class="login-btn">Login</a>
+        <a href="register.html" class="register-btn">Register</a>
     </div>
+</div>
 
-    <!-- Services -->
-    <div class="services">
+<!-- HERO -->
+<div class="hero">
+    Delivery Aapki, Transport Hamara
+</div>
 
-        <div class="service-box">
-            <img src="https://cdn-icons-png.flaticon.com/512/1995/1995501.png">
-            <h3>Truck</h3>
+<!-- CITY POPUP -->
+<div class="popup" id="cityPopup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">X</span>
+        <h2>Choose Your City</h2>
+
+        <div class="city-grid">
+
+            <!-- Example City -->
+            <div class="city" onclick="selectCity('Pune')">
+                <img src="https://source.unsplash.com/100x100/?pune">
+                <div class="city-name">Pune</div>
+            </div>
+
+            <div class="city" onclick="selectCity('Mumbai')">
+                <img src="https://source.unsplash.com/100x100/?mumbai">
+                <div class="city-name">Mumbai</div>
+            </div>
+
+            <div class="city" onclick="selectCity('Nashik')">
+                <img src="https://source.unsplash.com/100x100/?nashik">
+                <div class="city-name">Nashik</div>
+            </div>
+
+            <div class="city" onclick="selectCity('Ahmedabad')">
+                <img src="https://source.unsplash.com/100x100/?ahmedabad">
+                <div class="city-name">Ahmedabad</div>
+            </div>
+
+            <div class="city" onclick="selectCity('Delhi')">
+                <img src="https://source.unsplash.com/100x100/?delhi">
+                <div class="city-name">Delhi</div>
+            </div>
+
+            <div class="city" onclick="selectCity('Chennai')">
+                <img src="https://source.unsplash.com/100x100/?chennai">
+                <div class="city-name">Chennai</div>
+            </div>
+
+            <div class="city" onclick="selectCity('Sangamner')">
+                <img src="https://source.unsplash.com/100x100/?maharashtra">
+                <div class="city-name">Sangamner</div>
+            </div>
+
+            <div class="city" onclick="selectCity('Loni')">
+                <img src="https://source.unsplash.com/100x100/?india-town">
+                <div class="city-name">Loni</div>
+            </div>
+
+            <div class="city" onclick="selectCity('Akole')">
+                <img src="https://source.unsplash.com/100x100/?village,india">
+                <div class="city-name">Akole</div>
+            </div>
+
         </div>
-
-        <div class="service-box">
-            <img src="https://cdn-icons-png.flaticon.com/512/743/743922.png">
-            <h3>Two Wheeler</h3>
-        </div>
-
-        <div class="service-box">
-            <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png">
-            <h3>Packers & Movers</h3>
-        </div>
-
-        <a href="#" class="estimate-btn">Get an Estimate</a>
-
     </div>
+</div>
+
+<script>
+function openPopup(){
+    document.getElementById("cityPopup").style.display="flex";
+}
+
+function closePopup(){
+    document.getElementById("cityPopup").style.display="none";
+}
+
+function selectCity(cityName){
+    document.getElementById("cityDisplay").innerText = cityName;
+    closePopup();
+}
+</script>
 
 </body>
 </html>
