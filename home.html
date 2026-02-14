@@ -74,6 +74,35 @@ body{
     align-items:center;
     color:white;
     font-size:32px;
+    text-align:center;
+}
+
+/* SERVICES */
+.services{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    padding:50px 20px;
+    background:white;
+}
+
+.service-box{
+    width:200px;
+    text-align:center;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.service-box:hover{
+    transform:translateY(-5px);
+}
+
+.service-box img{
+    width:80px;
+    margin-bottom:15px;
 }
 
 /* POPUP */
@@ -113,7 +142,6 @@ body{
 .city{
     text-align:center;
     cursor:pointer;
-    transition:0.3s;
 }
 
 .city img{
@@ -121,10 +149,6 @@ body{
     height:100px;
     object-fit:cover;
     border-radius:15px;
-}
-
-.city:hover{
-    transform:scale(1.05);
 }
 
 .city-name{
@@ -160,6 +184,26 @@ body{
     Delivery Aapki, Transport Hamara
 </div>
 
+<!-- SERVICES SECTION -->
+<div class="services">
+
+    <div class="service-box">
+        <img src="images/truck.png">
+        <h3>Truck</h3>
+    </div>
+
+    <div class="service-box">
+        <img src="images/bike.png">
+        <h3>Bike</h3>
+    </div>
+
+    <div class="service-box">
+        <img src="images/packers.png">
+        <h3>Packers & Movers</h3>
+    </div>
+
+</div>
+
 <!-- CITY POPUP -->
 <div class="popup" id="cityPopup">
     <div class="popup-content">
@@ -168,50 +212,19 @@ body{
 
         <div class="city-grid">
 
-            <!-- Example City -->
             <div class="city" onclick="selectCity('Pune')">
-                <img src="https://source.unsplash.com/100x100/?pune">
+                <img src="images/pune.jpg">
                 <div class="city-name">Pune</div>
             </div>
 
             <div class="city" onclick="selectCity('Mumbai')">
-                <img src="https://source.unsplash.com/100x100/?mumbai">
+                <img src="images/mumbai.jpg">
                 <div class="city-name">Mumbai</div>
             </div>
 
             <div class="city" onclick="selectCity('Nashik')">
-                <img src="https://source.unsplash.com/100x100/?nashik">
+                <img src="images/nashik.jpg">
                 <div class="city-name">Nashik</div>
-            </div>
-
-            <div class="city" onclick="selectCity('Ahmedabad')">
-                <img src="https://source.unsplash.com/100x100/?ahmedabad">
-                <div class="city-name">Ahmedabad</div>
-            </div>
-
-            <div class="city" onclick="selectCity('Delhi')">
-                <img src="https://source.unsplash.com/100x100/?delhi">
-                <div class="city-name">Delhi</div>
-            </div>
-
-            <div class="city" onclick="selectCity('Chennai')">
-                <img src="https://source.unsplash.com/100x100/?chennai">
-                <div class="city-name">Chennai</div>
-            </div>
-
-            <div class="city" onclick="selectCity('Sangamner')">
-                <img src="https://source.unsplash.com/100x100/?maharashtra">
-                <div class="city-name">Sangamner</div>
-            </div>
-
-            <div class="city" onclick="selectCity('Loni')">
-                <img src="https://source.unsplash.com/100x100/?india-town">
-                <div class="city-name">Loni</div>
-            </div>
-
-            <div class="city" onclick="selectCity('Akole')">
-                <img src="https://source.unsplash.com/100x100/?village,india">
-                <div class="city-name">Akole</div>
             </div>
 
         </div>
