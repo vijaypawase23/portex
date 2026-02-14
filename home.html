@@ -1,165 +1,166 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>PorTex - Transport Services</title>
+    <meta charset="UTF-8">
+    <title>Transport Service</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
+        }
 
-            /* Black to Orange Background */
-            background: linear-gradient(to bottom, black 50%, orange 50%);
-            color: white;
+        body {
+            background-color: #f5f5f5;
         }
 
         /* Navbar */
         .navbar {
-            background-color: black;
-            padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 50px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .logo {
-            color: orange;
             font-size: 22px;
             font-weight: bold;
+            color: #0066cc;
         }
 
-        .nav-links a {
-            color: white;
+        .nav-buttons a {
             text-decoration: none;
             margin-left: 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
         }
 
-        .nav-links a:hover {
-            color: orange;
+        .login-btn {
+            border: 1px solid #0066cc;
+            color: #0066cc;
         }
 
-        .btn {
-            padding: 5px 12px;
-            border: 1px solid orange;
+        .register-btn {
+            background-color: #0066cc;
             color: white;
         }
 
-        /* Hero */
+        .register-btn:hover {
+            background-color: #004999;
+        }
+
+        /* Hero Section */
         .hero {
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        /* Sections */
-        .section {
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .services-box {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .service {
-            border: 1px solid white;
-            padding: 20px;
-            margin: 10px;
-            width: 250px;
-        }
-
-        /* Footer */
-        footer {
-            background-color: black;
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d');
+            background-size: cover;
+            background-position: center;
             color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 80px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        /* Service Section */
+        .services {
+            margin: -50px auto 50px;
+            width: 80%;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .service-box {
             text-align: center;
-            padding: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .services-box {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .nav-links {
-                margin-top: 10px;
-            }
+        .service-box:hover {
+            transform: scale(1.05);
         }
+
+        .service-box img {
+            width: 60px;
+            margin-bottom: 10px;
+        }
+
+        .estimate-btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            align-self: center;
+        }
+
+        .estimate-btn:hover {
+            background-color: #004999;
+        }
+
     </style>
 </head>
 
 <body>
 
-<!-- Navbar -->
-<div class="navbar">
-    <div class="logo">PorTex</div>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">MyTransport</div>
 
-    <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#">Tracking</a>
-        <a href="#contact">Contact</a>
-
-        <a href="login.html" class="btn">Login</a>
-        <a href="register.html" class="btn">Register</a>
-    </div>
-</div>
-
-<!-- Hero Section -->
-<div class="hero">
-    <h1>Fast. Safe. Reliable Transport Services</h1>
-    <p>We deliver your goods safely and on time.</p>
-</div>
-
-<!-- Services -->
-<div id="services" class="section">
-    <h2>Our Services</h2>
-
-    <div class="services-box">
-        <div class="service">
-            <h3>Road Transport</h3>
-            <p>Secure and fast road transportation.</p>
-        </div>
-
-        <div class="service">
-            <h3>Air Cargo</h3>
-            <p>Quick global air cargo services.</p>
-        </div>
-
-        <div class="service">
-            <h3>Sea Freight</h3>
-            <p>Reliable sea shipment solutions.</p>
+        <div class="nav-buttons">
+            <a href="login.html" class="login-btn">Login</a>
+            <a href="register.html" class="register-btn">Register</a>
         </div>
     </div>
-</div>
 
-<!-- About -->
-<div id="about" class="section">
-    <h2>About PorTex</h2>
-    <p>PorTex is a trusted logistics company providing transport services across multiple countries.</p>
-</div>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Delivery Aapki, Transport Hamara</h1>
+        <p>Reliable & Hassle-Free Goods Transport Service</p>
+    </div>
 
-<!-- Contact -->
-<div id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p>Email: info@portex.com</p>
-    <p>Phone: +91 9876543210</p>
-</div>
+    <!-- Services -->
+    <div class="services">
 
-<!-- Footer -->
-<footer>
-    © 2026 PorTex. All Rights Reserved.
-</footer>
+        <div class="service-box">
+            <img src="https://cdn-icons-png.flaticon.com/512/1995/1995501.png">
+            <h3>Truck</h3>
+        </div>
+
+        <div class="service-box">
+            <img src="https://cdn-icons-png.flaticon.com/512/743/743922.png">
+            <h3>Two Wheeler</h3>
+        </div>
+
+        <div class="service-box">
+            <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png">
+            <h3>Packers & Movers</h3>
+        </div>
+
+        <a href="#" class="estimate-btn">Get an Estimate</a>
+
+    </div>
 
 </body>
 </html>
