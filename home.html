@@ -67,19 +67,34 @@ body{
     color:white;
 }
 
-/* HERO */
+/* HERO - Aesthetic Transport Background */
 .hero{
-    height:350px;
-    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-    url('images/transport-bg.jpg');
+    height:420px;
+    background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.55)),
+    url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=80');
     background-size:cover;
     background-position:center;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
     display:flex;
     justify-content:center;
     align-items:center;
     color:white;
-    font-size:32px;
+    font-size:42px;
+    font-weight:800;
     text-align:center;
+    letter-spacing:1px;
+    padding:20px;
+}
+
+/* Responsive Hero */
+@media(max-width:768px){
+    .hero{
+        height:300px;
+        font-size:26px;
+        background-attachment:scroll;
+    }
 }
 
 /* SERVICES */
@@ -204,12 +219,12 @@ body{
     </div>
 
     <div class="service-box">
-        <img src="images/bike.png">
+        <img src="bike.png">
         <h3>Bike</h3>
     </div>
 
     <div class="service-box">
-        <img src="images/packers.png">
+        <img src="packers.png">
         <h3>Packers & Movers</h3>
     </div>
 </div>
@@ -222,7 +237,6 @@ body{
 
         <div class="city-grid">
 
-            <!-- All Cities -->
             <script>
                 const cities = [
                 "Chennai","Coimbatore","Ahmedabad","Bangalore","Hyderabad",
